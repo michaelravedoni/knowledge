@@ -1,10 +1,10 @@
 <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="{{ route('home') }}" class="flex items-center">
-            @if(file_exists($logoFile = storage_path('app/public/'.app(App\Settings\GeneralSettings::class)->logo)))
+            @if(file_exists($logoFile = storage_path('app/public/'.app(App\Settings\GeneralSettings::class)->logo)) && app(App\Settings\GeneralSettings::class)->logo)
             <img src="{{ asset('storage/'.app(App\Settings\GeneralSettings::class)->logo) }}?v={{ md5_file($logoFile) }}" class="h-6 mr-3 sm:h-9" alt="{{ config('app.name') }} Logo"/>
             @endif
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ app(App\Settings\GeneralSettings::class)->name }}</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ app(App\Settings\GeneralSettings::class)->site_name }}</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

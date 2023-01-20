@@ -22,8 +22,21 @@ class Settings extends SettingsPage
     protected function getFormSchema(): array
     {
         return [
+
             Card::make([
-                ColorPicker::make('primary'),
+                TextInput::make('site_name')
+                    ->label('Nom du site')
+                    ->required(),
+                TextInput::make('company_name')
+                    ->label('Nom de l\'entreprise')
+                    ->required(),
+                TextInput::make('company_url')
+                    ->label('Site web de l\'entreprise')
+                    ->url(),
+            ]),
+
+            Card::make([
+                ColorPicker::make('color_primary'),
                 FileUpload::make('favicon')
                     ->acceptedFileTypes(['image/png'])
                     ->helperText('Upload only .png file. Make sure your storage is linked (by running php artisan storage:link).')
@@ -51,11 +64,29 @@ class Settings extends SettingsPage
                         $ext = substr(strrchr($fileName, '.'), 1);
                         return (string)'logo.'.$ext;
                     }),
-            ])->columns(),
+            ])->columns(1),
 
-            TextInput::make('name')
-                ->label('Nom')
-                ->required(),
+            Card::make([
+                TextInput::make('privacy_url')
+                    ->label('URL vers la déclaration de confidentialité')
+                    ->url(),
+                TextInput::make('terms_url')
+                    ->label('URL vers les conditions générales')
+                    ->url(),
+                TextInput::make('statuspage_url')
+                    ->label('URL vers la statuspage')
+                    ->url(),
+            ]),
+
+            Card::make([
+                Toggle::make('enable_hc'),
+                Toggle::make('enable_statuspage'),
+                Toggle::make('enable_announcements'),
+                Toggle::make('enable_user_report'),
+                Toggle::make('enable_roadmap'),
+            ]),
+
+            /*
             TextInput::make('password')->helperText('Entering a password here will ask your users to enter a password before entering the knowledge.'),
             TextInput::make('custom_scripts')
                                 ->label('Custom header script')
@@ -100,6 +131,7 @@ class Settings extends SettingsPage
                 ])
                 ->helperText('This will send email notifications once a new item has been created or when there is a new version of the knowledge software.')
                 ->columnSpan(2),
+            */
         ];
     }
 }

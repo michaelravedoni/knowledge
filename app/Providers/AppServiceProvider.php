@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('partials.meta', static function ($view) {
             $view->with(
                 'defaultImage',
-                OgImageGenerator::make(app(GeneralSettings::class)->name)
+                OgImageGenerator::make(app(GeneralSettings::class)->site_name)
                     ->withSubject('Support')
                     ->withPolygonDecoration()
                     ->withFilename('og.jpg')

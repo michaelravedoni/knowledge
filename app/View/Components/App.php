@@ -25,7 +25,7 @@ class App extends Component
      */
     public function render()
     {
-        $tw = new Tailwind('brand', app(GeneralSettings::class)->primary);
+        $tw = new Tailwind('brand', app(GeneralSettings::class)->color_primary);
 
         $this->brandColors = $tw->getCssFormat();
 

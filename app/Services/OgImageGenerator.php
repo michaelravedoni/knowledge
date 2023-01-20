@@ -139,6 +139,6 @@ class OgImageGenerator
 
     protected function getBrandingColors(): Tailwind
     {
-        return new Tailwind('brand', app(GeneralSettings::class)->primary);
+        return new Tailwind('brand', app(GeneralSettings::class)->color_primary);
     }
 }
