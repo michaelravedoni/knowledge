@@ -2,7 +2,7 @@
 @section('description', '')@show
 
 <x-app>
-    <section class="relative text-white bg-gradient-to-b from-gray-600 to-gray-900 md:py-8 md:pb-16">
+    <section class="relative text-white bg-gradient-to-b from-gray-600 to-gray-900 py-8 pb-12 md:pb-16">
         <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative">
             <header class="relative grid items-center md:grid-cols-[3fr,2fr] md:gap-12">
                 <aside class="space-y-4 md:py-6">

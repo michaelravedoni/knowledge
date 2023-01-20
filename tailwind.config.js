@@ -24,4 +24,11 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
     ],
+    safelist: [
+      'kn-block-basic',
+      'kn-block-info',
+      'kn-block-success',
+      'kn-block-danger',
+      'kn-block-warning',
+    ]
 }

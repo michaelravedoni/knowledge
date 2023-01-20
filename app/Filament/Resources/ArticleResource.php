@@ -17,6 +17,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\ArticleResource\Pages;
@@ -63,33 +64,69 @@ class ArticleResource extends Resource
                     ->required(),
                 Builder::make('content')
                     ->blocks([
-                        Builder\Block::make('heading')
+                        Builder\Block::make('content')
                             ->schema([
-                                TextInput::make('content')
-                                    ->label('Heading')
-                                    ->required(),
-                                Select::make('level')
-                                    ->options([
-                                        'h1' => 'Heading 1',
-                                        'h2' => 'Heading 2',
-                                        'h3' => 'Heading 3',
-                                        'h4' => 'Heading 4',
-                                        'h5' => 'Heading 5',
-                                        'h6' => 'Heading 6',
-                                    ])
-                                    ->required(),
+                                RichEditor::make('content')
+                                    ->label('Contenu')
+                                    ->required()
+                                    ->toolbarButtons([
+                                        // 'attachFiles',
+                                        'blockquote',
+                                        'bold',
+                                        'bulletList',
+                                        'codeBlock',
+                                        'h2',
+                                        'h3',
+                                        'italic',
+                                        'link',
+                                        'orderedList',
+                                        'redo',
+                                        'strike',
+                                        'undo',
+                                    ]),
                             ]),
-                        Builder\Block::make('paragraph')
+                        Builder\Block::make('block')
                             ->schema([
-                                MarkdownEditor::make('content')
-                                    ->label('Paragraph')
-                                    ->required(),
+                                TextInput::make('heading')
+                                    ->label('Titre'),
+                                    RichEditor::make('text')
+                                    ->label('Texte')
+                                    ->required()
+                                    ->toolbarButtons([
+                                        // 'attachFiles',
+                                        // 'blockquote',
+                                        'bold',
+                                        'bulletList',
+                                        // 'codeBlock',
+                                        // 'h2',
+                                        // 'h3',
+                                        'italic',
+                                        'link',
+                                        'orderedList',
+                                        'redo',
+                                        'strike',
+                                        'undo',
+                                    ]),
+                                Select::make('level')
+                                    ->label('Niveau')
+                                    ->options([
+                                        'info' => 'Info',
+                                        'danger' => 'Danger',
+                                        'success' => 'Success',
+                                        'warning' => 'Warning',
+                                        'basic' => 'Basic',
+                                    ])
+                                    ->default('basic'),
                             ]),
                         Builder\Block::make('image')
                             ->schema([
                                 FileUpload::make('url')
                                     ->label('Image')
                                     ->image()
+                                    ->directory('articles')
+                                    ->required(),
+                                TextInput::make('caption')
+                                    ->label('Légende')
                                     ->required(),
                                 TextInput::make('alt')
                                     ->label('Alt text')
