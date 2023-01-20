@@ -1,5 +1,5 @@
 @section('title', $project->name)@show
-@section('image', $project->getOgImage('', 'Centre d\'aide'))@show
+@section('image', $project->getOgImage($project->description, 'Centre d\'aide'))@show
 @section('description', '')@show
 
 <x-app>
@@ -17,10 +17,6 @@
                         <article class="flex flex-col p-6 space-y-4">
                             <header class="flex-1 space-y-1">
                                 <h3 class="text-xl font-bold md:text-2xl">{{ $article->title }}</h3>
-
-                                <p class="text-gray-600">
-                                    …
-                                </p>
                             </header>
 
                             <footer class="flex items-center space-x-2">

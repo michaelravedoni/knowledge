@@ -43,7 +43,7 @@ class TestSeeder extends Seeder
         ]);
 
         \App\Models\Article::create([
-            'title' => ['en' => 'Article A - How to to this', 'fr' => 'Article A (fr)'],
+            'title' => ['en' => 'Article A - How to do this', 'fr' => 'Article A (fr)'],
             'slug' => 'article-a',
             'status' => 'published',
             'category_id' => 1,

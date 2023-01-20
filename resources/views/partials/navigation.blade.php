@@ -1,10 +1,10 @@
 <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="{{ route('home') }}" class="flex items-center">
-            @if(file_exists($logoFile = storage_path('app/public/'.app(App\Settings\GeneralSettings::class)->logo)) && app(App\Settings\GeneralSettings::class)->logo)
-            <img src="{{ asset('storage/'.app(App\Settings\GeneralSettings::class)->logo) }}?v={{ md5_file($logoFile) }}" class="h-6 mr-3 sm:h-9" alt="{{ config('app.name') }} Logo"/>
+            @if(file_exists($logoFile = storage_path('app/public/'.$settings->logo)) && $settings->logo)
+            <img src="{{ asset('storage/'.$settings->logo) }}?v={{ md5_file($logoFile) }}" class="h-6 mr-3 sm:h-9" alt="{{ $settings->site_name }} Logo"/>
             @endif
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ app(App\Settings\GeneralSettings::class)->site_name }}</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ $settings->site_name }}</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -20,14 +20,18 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
                 class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                @if ($settings->enable_hc)
                 <li>
                     <a href="{{ route('hc') }}"
                         class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Centre d'aide</a>
                 </li>
+                @endif
+                @if ($settings->company_url)
                 <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                    <a href="{{ $settings->company_url }}"
+                        class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{ $settings->company_name }}</a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>

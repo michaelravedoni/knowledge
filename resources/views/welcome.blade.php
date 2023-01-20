@@ -25,13 +25,14 @@
     <section class="py-12 bg-gray-50">
         <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative">
             <div class="grid gap-6 md:grid-cols-3">
+                @if ($settings->enable_hc)
                 <a href="{{ route('hc') }}"
                     class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <iconify-icon icon="material-symbols:library-books-outline" width="42"></iconify-icon>
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Centre d'aide</h2>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                        acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Vous avez une question, ou vous avez besoin d'aide ? Obtenez toutes les informations dont vous avez besoin, ici même.</p>
                 </a>
+                @endif
             </div>
         </div>
     </section>

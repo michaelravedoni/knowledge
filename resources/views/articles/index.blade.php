@@ -11,9 +11,11 @@
                         <header class="flex-1 space-y-1">
                             <h2 class="text-xl font-bold md:text-2xl">{{ $project->name }}</h2>
 
+                            @if ($project->description)
                             <p class="text-gray-600">
-                                …
+                                {{ $project->description }}
                             </p>
+                            @endif
                         </header>
 
                         <footer class="flex items-center space-x-2">
