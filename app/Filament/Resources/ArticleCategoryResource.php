@@ -11,6 +11,7 @@ use Filament\Resources\Table;
 use App\Models\ArticleCategory;
 use Filament\Resources\Resource;
 use app\Settings\GeneralSettings;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
@@ -51,6 +52,9 @@ class ArticleCategoryResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
+                Select::make('project_id')
+                    ->relationship('project', 'name')
+                    ->required(),
             ]);
     }
 
@@ -59,6 +63,7 @@ class ArticleCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('project.name'),
             ])
             ->filters([
                 //

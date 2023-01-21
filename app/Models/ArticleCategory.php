@@ -24,6 +24,14 @@ class ArticleCategory extends Model
     ];
 
     /**
+     * Get the project that owns the article.
+     */
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    /**
      * Get the articles for the category.
      */
     public function articles()

@@ -64,7 +64,7 @@ class ArticleResource extends Resource
                 Select::make('project_id')
                     ->relationship('project', 'name')
                     ->required(),
-                    Select::make('category_id')
+                Select::make('category_id')
                         ->relationship('category', 'name'),
                 Select::make('status')
                     ->options(collect(ArticleStatus::cases())->mapWithKeys(fn (ArticleStatus $category): array => [$category->value => $category->getLabel()]))
@@ -82,6 +82,7 @@ class ArticleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->searchable(),
+                Tables\Columns\TextColumn::make('project.name'),
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([
                         'warning' => ArticleStatus::Draft->value,
