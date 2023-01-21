@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function canAccessFilament(): bool
     {
-        return $this->hasAdminAccess();
+        return true;
     }
 
     public function hasAdminAccess(): bool

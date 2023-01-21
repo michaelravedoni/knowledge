@@ -62,7 +62,7 @@ php artisan view:clear
 php artisan migrate --force
 
 npm ci
-npm run production
+npm run build
 
 echo "🚀 Application deployed!"
 ```
@@ -78,7 +78,7 @@ echo "" | sudo -S service php8.1-fpm reload
 php artisan knowledge:upgrade
 
 npm ci
-npm run production
+npm run build
 
 echo "🚀 Application deployed!"
 ```
