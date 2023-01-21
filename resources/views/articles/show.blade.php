@@ -67,6 +67,24 @@
                     @elseif ($block['type'] == 'code')
                         <pre>{{ data_get($block, 'data.code') }}</pre>
 
+                    @elseif ($block['type'] == 'raw')
+                        {!! data_get($block, 'data.html') !!}
+
+                    @elseif ($block['type'] == 'list')
+                        @if (data_get($block, 'data.style') == 'ordered')
+                        <ol>
+                            @foreach (data_get($block, 'data.items') as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ol>
+                        @elseif (data_get($block, 'data.style') == 'unordered')
+                        <ul>
+                            @foreach (data_get($block, 'data.items') as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+
                     @endif
 
                     @endforeach
