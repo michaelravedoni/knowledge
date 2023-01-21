@@ -13,6 +13,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use App\Models\ArticleCategory;
 use Filament\Resources\Resource;
+use app\Settings\GeneralSettings;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\TextInput;
@@ -20,10 +21,10 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Resources\Concerns\Translatable;
+use FilamentEditorJs\Forms\Components\EditorJs;
 use App\Filament\Resources\ArticleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ArticleResource\RelationManagers;
-use app\Settings\GeneralSettings;
 
 class ArticleResource extends Resource
 {
@@ -69,79 +70,9 @@ class ArticleResource extends Resource
                     ->options(collect(ArticleStatus::cases())->mapWithKeys(fn (ArticleStatus $category): array => [$category->value => $category->getLabel()]))
                     // ->visible(auth()->user()->is_admin)
                     ->required(),
-                Builder::make('content')
-                    ->blocks([
-                        Builder\Block::make('content')
-                            ->schema([
-                                RichEditor::make('content')
-                                    ->label('Contenu')
-                                    ->required()
-                                    ->toolbarButtons([
-                                        // 'attachFiles',
-                                        'blockquote',
-                                        'bold',
-                                        'bulletList',
-                                        'codeBlock',
-                                        'h2',
-                                        'h3',
-                                        'italic',
-                                        'link',
-                                        'orderedList',
-                                        'redo',
-                                        'strike',
-                                        'undo',
-                                    ]),
-                            ]),
-                        Builder\Block::make('block')
-                            ->schema([
-                                TextInput::make('heading')
-                                    ->label('Titre'),
-                                    RichEditor::make('text')
-                                    ->label('Texte')
-                                    ->required()
-                                    ->toolbarButtons([
-                                        // 'attachFiles',
-                                        // 'blockquote',
-                                        'bold',
-                                        'bulletList',
-                                        // 'codeBlock',
-                                        // 'h2',
-                                        // 'h3',
-                                        'italic',
-                                        'link',
-                                        'orderedList',
-                                        'redo',
-                                        'strike',
-                                        'undo',
-                                    ]),
-                                Select::make('level')
-                                    ->label('Niveau')
-                                    ->options([
-                                        'info' => 'Info',
-                                        'danger' => 'Danger',
-                                        'success' => 'Success',
-                                        'warning' => 'Warning',
-                                        'basic' => 'Basic',
-                                    ])
-                                    ->default('basic'),
-                            ]),
-                        Builder\Block::make('image')
-                            ->schema([
-                                FileUpload::make('url')
-                                    ->label('Image')
-                                    ->image()
-                                    ->directory('articles')
-                                    ->required(),
-                                TextInput::make('caption')
-                                    ->label('Légende')
-                                    ->required(),
-                                TextInput::make('alt')
-                                    ->label('Alt text')
-                                    ->required(),
-                            ]),
-                    ])
-                    ->default([])
+                EditorJs::make('content')
                     ->hint('Translatable')
+                    ->default([])
                     ->columnSpan('full'),
             ]);
     }

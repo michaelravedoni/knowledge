@@ -18,7 +18,7 @@ class TestSeeder extends Seeder
         \App\Models\User::factory(1)->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => '$2y$10$jhTtt/b/whoOW4xwfIPOqeswi2RDuzMq/UDw3uYHCOMpIeVufqfWK',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'role' => UserRole::Admin->value,
         ]);
 
@@ -51,34 +51,42 @@ class TestSeeder extends Seeder
             'project_id' => 1,
             'content' => [
                 "en" => [
-                    [
-                        "type" => "content",
-                        "data" => [
-                            "content" => "<p>English paragraph text.</p>"
-                        ]
-                    ],
-                    [
-                        "type" => "block",
-                        "data" => [
-                            "heading" => null,
-                            "text" => "<p>Basic block in english</p>",
-                            "level" => "basic",
+                    "time" => 1674316697592,
+                    "blocks" => [
+                        [
+                            "id" => "jSOnhes_cE",
+                            "type" => "paragraph",
+                            "data" => [
+                                "text" => "English paragraph text."
+                            ]
+                        ],
+                        [
+                            "id" => "b1C8VbTKwK",
+                            "type" => "quote",
+                            "data" => [
+                                "caption" => null,
+                                "text" => "Basic block in english",
+                            ]
                         ]
                     ]
                 ],
                 "fr" => [
-                    [
-                        "type" => "content",
-                        "data" => [
-                            "content" => "<p>Ligne de texte en français.</p>"
-                        ]
-                    ],
-                    [
-                        "type" => "block",
-                        "data" => [
-                            "heading" => 'Titre du block',
-                            "text" => "<p>Bloc d'information en français</p>",
-                            "level" => "info",
+                    "time" => 1674316697592,
+                    "blocks" => [
+                        [
+                            "id" => "jSOnhes_cE",
+                            "type" => "paragraph",
+                            "data" => [
+                                "text" => "Ligne de texte en français."
+                            ]
+                        ],
+                        [
+                            "id" => "b1C8VbTKwK",
+                            "type" => "quote",
+                            "data" => [
+                                "caption" => null,
+                                "text" => "Bloc d'information en français",
+                            ]
                         ]
                     ]
                 ],

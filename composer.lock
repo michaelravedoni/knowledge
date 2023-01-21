@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff6af3c5ae14bfa707e57c81a8ec0cfa",
+    "content-hash": "d74d935cae075eefcb66a525b2694136",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -4183,6 +4183,72 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.11.10"
             },
             "time": "2022-12-23T17:47:18+00:00"
+        },
+        {
+            "name": "rahmanramsi/filament-editorjs",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rahmanramsi/filament-editorjs.git",
+                "reference": "0cf5dd9e94900f782b327dc6571bbb6391b1fc96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rahmanramsi/filament-editorjs/zipball/0cf5dd9e94900f782b327dc6571bbb6391b1fc96",
+                "reference": "0cf5dd9e94900f782b327dc6571bbb6391b1fc96",
+                "shasum": ""
+            },
+            "require": {
+                "filament/forms": "^2.0",
+                "illuminate/contracts": "^8.0|^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "nunomaduro/collision": "^6.0",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FilamentEditorJs\\FilamentEditorJsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FilamentEditorJs\\": "src",
+                    "FilamentEditorJs\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rahman Ramsi",
+                    "email": "rahmanramsi19@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Next generation block styled editor.",
+            "homepage": "https://github.com/rahmanramsi/filament-editorjs",
+            "keywords": [
+                "filament-editorjs",
+                "laravel",
+                "rahmanramsi"
+            ],
+            "support": {
+                "issues": "https://github.com/rahmanramsi/filament-editorjs/issues",
+                "source": "https://github.com/rahmanramsi/filament-editorjs/tree/v1.0.1"
+            },
+            "time": "2022-06-22T07:14:29+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
