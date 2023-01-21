@@ -12,8 +12,11 @@ class CreateGeneralSettings extends SettingsMigration
         $this->migrator->add('general.color_primary', '#2563EB');
         $this->migrator->add('general.favicon', null);
         $this->migrator->add('general.logo', null);
+        $this->migrator->add('general.fallback_language', config('app.locale'));
+        $this->migrator->add('general.languages', [config('app.locale'), 'fr']);
         $this->migrator->add('general.privacy_url', null);
         $this->migrator->add('general.terms_url', null);
+        $this->migrator->add('general.contact_url', null);
         $this->migrator->add('general.statuspage_url', null);
         $this->migrator->add('general.enable_hc', true);
         $this->migrator->add('general.enable_statuspage', null);

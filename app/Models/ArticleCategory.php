@@ -11,7 +11,7 @@ class ArticleCategory extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['name'];
+    public $translatable = ['name', 'slug'];
 
     /**
      * The attributes that are mass assignable.

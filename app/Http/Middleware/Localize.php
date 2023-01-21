@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use app\Settings\GeneralSettings;
+use Illuminate\Support\Facades\Session;
 
 class Localize
 {
@@ -19,13 +21,10 @@ class Localize
     {
 
         $localeQueryString = $request->query('l');
-        $availableLocales = config('filament-spatie-laravel-translatable-plugin.default_locales');
-        $defaultLocale = config('app.locale');
+        $availableLocales = app(GeneralSettings::class)->languages;
+        $defaultLocale = app(GeneralSettings::class)->fallback_language ?? config('app.locale');
 
-        if (auth()->check()) {
-            $locale = auth()->user()->locale;
-        }
-		else if ($localeQueryString != null) {
+        if ($localeQueryString != null) {
             $locale = $localeQueryString;
         }
 		else if (Session::has('locale')) {

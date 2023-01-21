@@ -15,7 +15,7 @@ class Article extends Model
     use Searchable;
     use HasOgImage;
 
-    public $translatable = ['title'];
+    public $translatable = ['title', 'content', 'slug'];
 
     /**
      * The attributes that are mass assignable.

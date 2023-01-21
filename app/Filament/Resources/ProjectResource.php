@@ -10,18 +10,27 @@ use Filament\Pages\Page;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use app\Settings\GeneralSettings;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
 
 class ProjectResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    public static function getTranslatableLocales(): array
+    {
+        return app(GeneralSettings::class)->languages;
+    }
 
     public static function form(Form $form): Form
     {
@@ -41,6 +50,9 @@ class ProjectResource extends Resource
                 TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true)
+                    ->maxLength(255),
+                TextInput::make('description')
+                    ->hint('Translatable')
                     ->maxLength(255),
             ]);
     }

@@ -38,7 +38,7 @@ echo 'Command: npm'
 npm ci
 
 # Build assets using Laravel Mix
-npm run production
+npm run build
 
 # Turn off maintenance mode
 echo 'Command: up'

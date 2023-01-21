@@ -10,7 +10,7 @@
             <div class="bg-gray-50 px-6 py-12 -mt-20 rounded">
                 <article class="prose sm:prose-sm md:prose-md lg:prose-lg max-w-none">
 
-                    <div class="text-2xl lg:text-4xl font-bold dark:text-white">{{ $article->title }}</div>
+                    <h1 class="text-lg lg:text-2xl font-bold dark:text-white">{{ $article->title }}</h1>
 
                     @foreach ($article->content as $block)
 

@@ -9,7 +9,7 @@
         <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative space-y-12">
             @foreach ($categories as $category => $articles)
             <div>
-                <h2 class="text-xl font-bold md:text-2xl mb-6" id="{{ $articles->first()->category->slug }}">{{ $category }}</h2>
+                <h2 class="text-xl font-bold md:text-2xl mb-6" id="{{ data_get($articles, '0.category.slug', 'without-categoriy') }}">{{ $category }}</h2>
                 <div class="grid gap-6 md:grid-cols-3">
                     @foreach ($articles as $article)
                     <a class="block transition transform rounded-md shadow-sm focus:outline-none focus:ring-4 hover:-translate-y-1 focus:ring-primary-200 bg-white rounded-md shadow"

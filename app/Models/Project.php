@@ -4,12 +4,16 @@ namespace App\Models;
 
 use App\Traits\HasOgImage;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
     use HasFactory;
+    use HasTranslations;
     use HasOgImage;
+
+    public $translatable = ['description'];
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +23,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'slug',
+        'description',
     ];
 
     /**

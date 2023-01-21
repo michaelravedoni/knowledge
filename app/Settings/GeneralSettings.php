@@ -12,8 +12,11 @@ class GeneralSettings extends Settings
     public string|null $color_primary;
     public string|null $favicon;
     public string|null $logo;
+    public string|null $fallback_language;
+    public array $languages;
     public string|null $privacy_url;
     public string|null $terms_url;
+    public string|null $contact_url;
     public string|null $statuspage_url;
     public bool|null $enable_hc;
     public bool|null $enable_statuspage;

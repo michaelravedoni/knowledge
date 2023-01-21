@@ -23,6 +23,7 @@ use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\ArticleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ArticleResource\RelationManagers;
+use app\Settings\GeneralSettings;
 
 class ArticleResource extends Resource
 {
@@ -31,6 +32,11 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    public static function getTranslatableLocales(): array
+    {
+        return app(GeneralSettings::class)->languages;
+    }
 
     public static function form(Form $form): Form
     {
@@ -46,18 +52,19 @@ class ArticleResource extends Resource
                         $set('slug', str($state)->slug());
                     })
                     ->required()
+                    ->hint('Translatable')
                     ->maxLength(255),
                 TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255)
+                    ->hint('Translatable')
                     ->disabled(fn (?Article $record) => (! auth()->user()->is_admin) && $record?->status === ArticleStatus::Published),
                 Select::make('project_id')
                     ->relationship('project', 'name')
                     ->required(),
                     Select::make('category_id')
-                        ->relationship('category', 'name')
-                        ->required(),
+                        ->relationship('category', 'name'),
                 Select::make('status')
                     ->options(collect(ArticleStatus::cases())->mapWithKeys(fn (ArticleStatus $category): array => [$category->value => $category->getLabel()]))
                     // ->visible(auth()->user()->is_admin)
@@ -133,6 +140,8 @@ class ArticleResource extends Resource
                                     ->required(),
                             ]),
                     ])
+                    ->default([])
+                    ->hint('Translatable')
                     ->columnSpan('full'),
             ]);
     }

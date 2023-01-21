@@ -26,10 +26,32 @@
                         class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Centre d'aide</a>
                 </li>
                 @endif
+
+                <li>
+                <button type="button" data-dropdown-toggle="language-dropdown-menu" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                    {{ strtoupper(app()->getLocale()) }}
+                  </button>
+                  <!-- Dropdown -->
+                  <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700" id="language-dropdown-menu">
+                    <ul class="py-1" role="none">
+                        @foreach ($settings->languages as $language)
+                        <li>
+                            <a href="{{ url()->current() }}?l={{ $language }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white
+                            @if($language == session()->get('locale')) bg-gray-200 @endif" role="menuitem">
+                            <div class="inline-flex items-center">
+                                {{ ucfirst(locale_get_display_name($language, $language)) }}
+                            </div>
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                  </div>
+                </li>
+
                 @if ($settings->company_url)
                 <li>
                     <a href="{{ $settings->company_url }}"
-                        class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{ $settings->company_name }}</a>
+                        class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{ $settings->company_name }}<iconify-icon inline icon="bi:arrow-right" class="ml-2"></iconify-icon></a>
                 </li>
                 @endif
             </ul>

@@ -14,6 +14,11 @@ use Laravel\Socialite\Contracts\Factory as SocialiteFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot(Kernel $kernel): void
     {
         View::composer('partials.meta', static function ($view) {
@@ -27,14 +32,15 @@ class AppServiceProvider extends ServiceProvider
                     ->getPublicUrl()
             );
         });
-
-        if (file_exists($favIcon = storage_path('app/public/favicon.png'))) {
-            config(['filament.favicon' => asset('storage/favicon.png') . '?v=' . md5_file($favIcon)]);
-        }
     }
 
-    protected function addVerificationMiddleware(Kernel $kernel)
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
     {
-        $kernel->appendMiddlewareToGroup('authed', 'verified');
+        //
     }
 }

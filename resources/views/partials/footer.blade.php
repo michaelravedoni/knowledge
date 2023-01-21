@@ -19,9 +19,9 @@
             <a href="{{ $settings->privacy_url }}" class="mr-4 hover:underline md:mr-6">Politique de confidentialité</a>
         </li>
         @endif
-        @if ($settings->company_url)
+        @if ($settings->contact_url)
         <li>
-            <a href="{{ $settings->company_url }}" class="hover:underline">Contact</a>
+            <a href="{{ $settings->contact_url }}" class="hover:underline">Contact</a>
         </li>
         @endif
     </ul>
