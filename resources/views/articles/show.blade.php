@@ -61,7 +61,7 @@
                         <img src="{{ data_get($block, 'data.file.url') }}" class="@if(data_get($block, 'data.withBackground')) max-w-md mx-auto @endif"/>
 
                         @if (data_get($block, 'data.caption'))
-                        <div class="text-sm -mt-4">{{ data_get($block, 'data.caption') }}</div>
+                        <div class="text-sm -mt-4 text-gray-400">{{ data_get($block, 'data.caption') }}</div>
                         @endif
 
                     @elseif ($block['type'] == 'code')

@@ -30,6 +30,7 @@ module.exports = {
       'kn-block-success',
       'kn-block-danger',
       'kn-block-warning',
+      'text-gray-400',
       'text-sm',
       '-mt-4',
       'max-w-md',
