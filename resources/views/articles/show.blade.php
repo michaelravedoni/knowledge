@@ -15,7 +15,7 @@
                     @foreach (data_get($article, 'content.blocks') as $block)
 
                     @if ($block['type'] == 'paragraph')
-                        <p class="mb-3 font-light text-gray-500 dark:text-gray-400">{!! data_get($block, 'data.text') !!}</p>
+                        <p>{!! data_get($block, 'data.text') !!}</p>
 
                     @elseif ($block['type'] == 'header')
                         <h{{ data_get($block, 'data.level') }} class="font-bold">{!! data_get($block, 'data.text') !!}</h{{ data_get($block, 'data.level') }}>
