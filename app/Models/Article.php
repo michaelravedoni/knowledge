@@ -28,7 +28,7 @@ class Article extends Model implements Sortable
     protected $fillable = [
         'title',
         'slug',
-        'status',
+        'published',
         'content',
         'categories',
         'order',
@@ -71,5 +71,16 @@ class Article extends Model implements Sortable
             'slug' => $this->slug,
             'content' => $this->content,
         ];
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePublished($query)
+    {
+        $query->where('published', true);
     }
 }

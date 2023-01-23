@@ -8,11 +8,11 @@
     <section class="py-12 bg-gray-200">
         <div class="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 relative">
             <div class="bg-gray-50 px-6 py-12 -mt-20 rounded">
-                <article class="prose sm:prose-sm md:prose-md lg:prose-lg max-w-none">
+                <article class="prose sm:prose-sm md:prose-base lg:prose-lg max-w-none">
 
-                    <h1 class="text-lg lg:text-2xl font-bold dark:text-white">{{ $article->title }}</h1>
+                    <h1 class="text-2xl lg:text-3xl">{{ $article->title }}</h1>
 
-                    @foreach (data_get($article, 'content.blocks') as $block)
+                    @forelse (data_get($article, 'content.blocks', []) as $block)
 
                     @if ($block['type'] == 'paragraph')
                         <p>{!! data_get($block, 'data.text') !!}</p>
@@ -87,7 +87,18 @@
 
                     @endif
 
-                    @endforeach
+                    @empty
+                    <div role="status" class="max-w-sm animate-pulse">
+                        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                        <span class="sr-only">No content...</span>
+                    </div>
+
+                    @endforelse
 
                 </article>
             </div>

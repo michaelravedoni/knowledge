@@ -16,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('articles.index', [
-            'projects' => Project::withCount('articles')->get(),
+            'projects' => Project::withCount('articles')->ordered()->get(),
         ]);
     }
 
@@ -48,7 +48,7 @@ class ArticleController extends Controller
     {
         return view('articles.project', [
             'project' => $project = Project::where('slug', $project)->firstOrFail(),
-            'categories' => $project->articles->loadMissing('category')->groupBy('category.name'),
+            'categories' => $project->articles()->published()->ordered()->get()->loadMissing('category')->groupBy('category.name'),
         ]);
     }
 

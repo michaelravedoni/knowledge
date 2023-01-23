@@ -48,7 +48,7 @@ class TestSeeder extends Seeder
         \App\Models\Article::create([
             'title' => ['en' => 'Article A - How to do this', 'fr' => 'Article A (fr)'],
             'slug' => ['en' => 'article-a', 'fr' => 'article-a'],
-            'status' => 'published',
+            'published' => true,
             'category_id' => 1,
             'project_id' => 1,
             'content' => [
@@ -98,7 +98,7 @@ class TestSeeder extends Seeder
         \App\Models\Article::create([
             'title' => ['en' => 'Article b - Register yourself', 'fr' => 'Article b (fr)'],
             'slug' => ['en' => 'article-b', 'fr' => 'article-b'],
-            'status' => 'published',
+            'published' => true,
             'category_id' => 1,
             'project_id' => 1,
         ]);
@@ -106,7 +106,7 @@ class TestSeeder extends Seeder
         \App\Models\Article::create([
             'title' => ['en' => 'Article c - Do this easely on your own and a long title very long too far away'],
             'slug' => ['en' => 'article-c', 'fr' => 'article-c'],
-            'status' => 'published',
+            'published' => true,
             'category_id' => 2,
             'project_id' => 1,
         ]);
@@ -114,7 +114,7 @@ class TestSeeder extends Seeder
         \App\Models\Article::create([
             'title' => ['en' => 'Article D - No category'],
             'slug' => ['en' => 'article-d', 'fr' => 'article-d'],
-            'status' => 'published',
+            'published' => false,
             'category_id' => null,
             'project_id' => 1,
         ]);

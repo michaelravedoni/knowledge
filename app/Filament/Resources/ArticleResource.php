@@ -8,7 +8,6 @@ use Filament\Forms;
 use Filament\Tables;
 use App\Models\Article;
 use Filament\Pages\Page;
-use App\Enums\ArticleStatus;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use App\Models\ArticleCategory;
@@ -25,6 +24,7 @@ use FilamentEditorJs\Forms\Components\EditorJs;
 use App\Filament\Resources\ArticleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ArticleResource\RelationManagers;
+use Filament\Forms\Components\Toggle;
 
 class ArticleResource extends Resource
 {
@@ -59,16 +59,15 @@ class ArticleResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255)
-                    ->hint('Translatable')
-                    ->disabled(fn (?Article $record) => (! auth()->user()->is_admin) && $record?->status === ArticleStatus::Published),
+                    ->hint('Translatable'),
                 Select::make('project_id')
                     ->relationship('project', 'name')
                     ->required(),
                 Select::make('category_id')
                         ->relationship('category', 'name'),
-                Select::make('status')
-                    ->options(collect(ArticleStatus::cases())->mapWithKeys(fn (ArticleStatus $category): array => [$category->value => $category->getLabel()]))
-                    // ->visible(auth()->user()->is_admin)
+                Toggle::make('published')
+                    ->inline()
+                    ->default(1)
                     ->required(),
                 EditorJs::make('content')
                     ->hint('Translatable')
@@ -83,12 +82,15 @@ class ArticleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')->searchable(),
                 Tables\Columns\TextColumn::make('project.name'),
-                Tables\Columns\BadgeColumn::make('status')
-                    ->colors([
-                        'warning' => ArticleStatus::Draft->value,
-                        'success' => ArticleStatus::Published->value,
+                Tables\Columns\IconColumn::make('published')
+                    ->options([
+                        'heroicon-o-x-circle',
+                        'heroicon-o-check-circle' => 1,
                     ])
-                    ->enum(collect(ArticleStatus::cases())->mapWithKeys(fn (ArticleStatus $status): array => [$status->value => $status->getLabel()]))
+                    ->colors([
+                        'warning',
+                        'success' => 1,
+                    ])
                     ->sortable(),
             ])
             ->filters([
@@ -121,6 +123,6 @@ class ArticleResource extends Resource
 
     protected function getTableQuery(): Builder
     {
-        return Post::ordered->query();
+        return Post::query();
     }
 }

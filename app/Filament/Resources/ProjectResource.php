@@ -93,6 +93,6 @@ class ProjectResource extends Resource
 
     protected function getTableQuery(): Builder
     {
-        return Post::ordered->query();
+        return Post::query();
     }
 }

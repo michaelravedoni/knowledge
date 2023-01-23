@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->json('slug')->nullable();
-            $table->string('status')->nullable();
+            $table->boolean('published')->nullable();
             $table->json('content')->nullable();
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->foreignId('category_id')->nullable()->constrained('article_categories')->nullOnDelete();
