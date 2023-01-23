@@ -2,18 +2,21 @@
 @section('description', '')@show
 
 <x-app>
-    <section class="relative text-white bg-gradient-to-b from-gray-600 to-gray-900 py-8 pb-12 md:pb-16">
+    <section class="relative text-white bg-gradient-to-b from-gray-700 to-black py-8 pb-12 md:pb-16">
         <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative">
             <header class="relative grid items-center md:grid-cols-[3fr,2fr] md:gap-12">
                 <aside class="space-y-4 md:py-6">
 
                     <h1 class="text-4xl font-bold tracking-tight md:text-5xl font-headline">
-                        Support
+                        @if ($settings->company_name)
+                            {{ $settings->company_name }}
+                        @else
+                            {{ $settings->site_name }}
+                        @endif
                     </h1>
 
                     <p class="font-medium text-gray-300 md:text-xl">
-                        Do you have a question, or need information about your server? Get all the info you need, right
-                        here.
+                        Obtenez de l'aide sur nos produits et nos services
                     </p>
 
                 </aside>
