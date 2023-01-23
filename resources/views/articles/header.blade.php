@@ -1,8 +1,8 @@
-<section class="relative text-white bg-gradient-to-b from-gray-600 to-gray-900 py-8 pb-12 md:pb-16">
+<section class="relative text-white bg-gradient-to-b from-gray-700 to-black py-8 pb-12 md:pb-16">
     <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative">
         <header class="relative grid items-center md:grid-cols-[3fr,2fr] md:gap-12">
             <aside class="md:py-6">
-                <p class="text-sm font-bold tracking-wider uppercase text-blue-400">
+                <p class="text-sm font-bold tracking-wider uppercase text-brand-400">
                     @if (isset($article))
                         <a href="{{ route('hc.project', ['project' => $project->slug]) }}">{{ $project->name }}</a>
                         @if (isset($article->category))
@@ -44,10 +44,10 @@
                                 </svg>
                             </div>
                             <input type="search" id="default-search" name="q" value="{{ $q ?? null }}"
-                                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-brand-500 focus:border-brand-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-brand-500 dark:focus:border-brand-500"
                                 placeholder="Search Mockups, Logos..." required>
                             <button type="submit"
-                                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Rechercher</button>
+                                class="text-white absolute right-2.5 bottom-2.5 bg-brand-700 hover:bg-brand-800 focus:ring-4 focus:outline-none focus:ring-brand-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-brand-600 dark:hover:bg-brand-700 dark:focus:ring-brand-800">Rechercher</button>
                         </div>
                     </form>
                 </div>
