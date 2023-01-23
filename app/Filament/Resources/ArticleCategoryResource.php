@@ -73,7 +73,8 @@ class ArticleCategoryResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->reorderable('order');
     }
 
     public static function getRelations(): array
@@ -90,5 +91,10 @@ class ArticleCategoryResource extends Resource
             'create' => Pages\CreateArticleCategory::route('/create'),
             'edit' => Pages\EditArticleCategory::route('/{record}/edit'),
         ];
+    }
+
+    protected function getTableQuery(): Builder
+    {
+        return Post::ordered->query();
     }
 }

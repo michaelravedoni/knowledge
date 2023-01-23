@@ -24,6 +24,7 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete();
             $table->unsignedBigInteger('views')->default(0);
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

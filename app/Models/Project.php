@@ -3,15 +3,18 @@
 namespace App\Models;
 
 use App\Traits\HasOgImage;
+use Spatie\EloquentSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Project extends Model
+class Project extends Model implements Sortable
 {
     use HasFactory;
     use HasTranslations;
     use HasOgImage;
+    use SortableTrait;
 
     public $translatable = ['description'];
 
@@ -24,6 +27,7 @@ class Project extends Model
         'name',
         'slug',
         'description',
+        'order',
     ];
 
     /**

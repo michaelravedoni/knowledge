@@ -4,16 +4,19 @@ namespace App\Models;
 
 use App\Traits\HasOgImage;
 use Laravel\Scout\Searchable;
+use Spatie\EloquentSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Article extends Model
+class Article extends Model implements Sortable
 {
     use HasFactory;
     use HasTranslations;
     use Searchable;
     use HasOgImage;
+    use SortableTrait;
 
     public $translatable = ['title', 'content', 'slug'];
 
@@ -28,6 +31,7 @@ class Article extends Model
         'status',
         'content',
         'categories',
+        'order',
     ];
 
     /**

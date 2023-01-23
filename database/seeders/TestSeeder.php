@@ -36,11 +36,13 @@ class TestSeeder extends Seeder
         \App\Models\ArticleCategory::create([
             'name' => ['en' => 'Category A', 'fr' => 'Catégorie A'],
             'slug' => ['en' => 'category-a', 'fr' => 'categorie-a'],
+            'project_id' => 1,
         ]);
 
         \App\Models\ArticleCategory::create([
             'name' => ['en' => 'Category B', 'fr' => 'Catégorie B'],
             'slug' => ['en' => 'category-b', 'fr' => 'categorie-b'],
+            'project_id' => 1,
         ]);
 
         \App\Models\Article::create([

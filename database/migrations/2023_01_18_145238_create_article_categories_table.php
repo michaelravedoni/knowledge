@@ -18,6 +18,7 @@ return new class extends Migration
             $table->json('name')->nullable();
             $table->string('slug')->nullable();
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->json('description')->nullable();
             $table->string('slug')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }
